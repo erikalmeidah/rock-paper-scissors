@@ -53,15 +53,23 @@ body{
     margin-bottom: 50px;
 }
 
-.reset-button {
+.buttons-container{
+    text-align: center;
+}
+
+.reset-button,
+.autoplay-button {
+    display: block;
     background-color: white;
     border: none;
     font-size: 15px;
     padding: 10px 15px;
     cursor: pointer;
     border-radius: 50px;
+    margin: 20px auto; 
 }
 
-.reset-button:hover {
+.reset-button:hover,
+.autoplay-button:hover {
     background-color: rgb(219, 219, 219);
 }

@@ -15,6 +15,23 @@ function resetScore(){
     document.querySelector('.js-moves').innerHTML = '';
 }
 
+let isAutoPlaying = false;
+let intervalId;
+
+function autoPlay() {
+  if(!isAutoPlaying){
+    const func = function(){
+      const playerMove = pickComputerMove();
+      playGame(playerMove)
+    }
+    intervalId = setInterval(func, 1000);
+    isAutoPlaying = true;
+  }else{
+    clearInterval(intervalId);
+    isAutoPlaying = false;
+  }
+}
+
 function playGame(playerMove){
   const computerMove = pickComputerMove();
   let res = '';
