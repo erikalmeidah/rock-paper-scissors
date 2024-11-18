@@ -73,3 +73,9 @@ body{
 .autoplay-button:hover {
     background-color: rgb(219, 219, 219);
 }
+
+.keyboard-tutorial {
+    margin-top: 50px;
+    font-size: 10px;
+    text-align: center;
+}

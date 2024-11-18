@@ -1,3 +1,4 @@
+//get local storage score feature
 const score = JSON.parse(localStorage.getItem('score')) || {
     wins: 0,
     losses: 0,
@@ -5,6 +6,7 @@ const score = JSON.parse(localStorage.getItem('score')) || {
 };
 updateScoreElement();
 
+//reset score feature
 function resetScore(){
     score.wins = 0;
     score.losses = 0;
@@ -15,6 +17,7 @@ function resetScore(){
     document.querySelector('.js-moves').innerHTML = '';
 }
 
+//autoplay feature
 let isAutoPlaying = false;
 let intervalId;
 
@@ -31,6 +34,51 @@ function autoPlay() {
   }
 }
 
+//event listeners for buttons
+//rock button
+const rockButton = document.querySelector('.js-rock-button');
+rockButton.addEventListener('click', () => {
+  playGame('rock');
+});
+
+//paper button
+const paperButton = document.querySelector('.js-paper-button');
+paperButton.addEventListener('click', () => {
+  playGame('paper');
+});
+
+//scissors button
+const scissorsButton = document.querySelector('.js-scissors-button');
+scissorsButton.addEventListener('click', () => {
+  playGame('scissors');
+});
+
+//autoplay button
+const autoplayButton = document.querySelector('.js-autoplay-button');
+autoplayButton.addEventListener('click', () => {
+  autoPlay();
+});
+
+//reset button
+const resetScoreButton = document.querySelector('.js-reset-score-button');
+resetScoreButton.addEventListener('click', () => {
+  resetScore();
+});
+
+//event listeners for keyboard play functionality
+document.body.addEventListener('keydown', (event) => {
+  if(event.key === 'r') {
+    playGame('rock');
+  }else if(event.key === 'p') {
+    playGame('paper');
+  }else if(event.key === 's'){
+    playGame('scissors');
+  }else{
+    console.log('Not a playable move.');
+  }
+});
+
+//play feature
 function playGame(playerMove){
   const computerMove = pickComputerMove();
   let res = '';
@@ -81,10 +129,12 @@ function playGame(playerMove){
   return;
 }
 
+//update score 
 function updateScoreElement(){
   document.querySelector('.js-score').innerHTML = '\nWins: ' + score.wins + ', Losses: ' + score.losses + ', Ties: ' + score.ties;
 }
 
+//pick computer move
 function pickComputerMove(){
   const randomNumber = Math.random();
   let computerMove = '';
